@@ -2,6 +2,7 @@
 
 import { currentUser } from "@clerk/nextjs";
 import { db } from "../db";
+import { formSchema, formSchemaType } from "../validations/form";
 
 class UserNotFoundError extends Error {}
 
@@ -31,4 +32,56 @@ export const getFormStats = async () => {
     submissionRate,
     bounceRate,
   };
+};
+
+export const createForm = async (data: formSchemaType) => {
+  const validData = formSchema.safeParse(data);
+  if (!validData.success) {
+    return { error: "Invalid data" };
+  }
+  const { name, description } = validData.data;
+  const user = await currentUser();
+  if (!user) {
+    return { error: "User not found" };
+  }
+
+  const form = await db.form.create({
+    data: {
+      userId: user.id,
+      name,
+      description,
+    },
+  });
+  if (!form) {
+    return { error: "An error occured creating the form" };
+  }
+  return form.id;
+};
+
+export const getForms = async () => {
+  const user = await currentUser();
+  if (!user) {
+    throw new UserNotFoundError("User not found");
+  }
+  return db.form.findMany({
+    where: {
+      userId: user.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+};
+
+export const getFormById = async (id: string) => {
+  const user = await currentUser();
+  if (!user) {
+    throw new UserNotFoundError("User not found");
+  }
+  return db.form.findUnique({
+    where: {
+      id,
+      userId: user.id,
+    },
+  });
 };
