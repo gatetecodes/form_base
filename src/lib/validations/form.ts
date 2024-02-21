@@ -1,0 +1,8 @@
+import * as z from "zod";
+
+export const formSchema = z.object({
+  name: z.string().min(4),
+  description: z.optional(z.string()),
+});
+
+export type formSchemaType = z.infer<typeof formSchema>;
