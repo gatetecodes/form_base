@@ -72,3 +72,16 @@ export const getForms = async () => {
     },
   });
 };
+
+export const getFormById = async (id: string) => {
+  const user = await currentUser();
+  if (!user) {
+    throw new UserNotFoundError("User not found");
+  }
+  return db.form.findUnique({
+    where: {
+      id,
+      userId: user.id,
+    },
+  });
+};
