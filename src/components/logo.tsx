@@ -5,9 +5,9 @@ const Logo = () => {
   return (
     <Link
       href={"/"}
-      className="font-bold text-3xl bg-gradient-to-r from-indigo-400 to-cyan-400 text-transparent bg-clip-text hover:cursor-pointer"
+      className="text-3xl font-bold text-gray-600  hover:cursor-pointer"
     >
-      FormBase
+      formbase <span className="text-orange-600 -ml-2 text-5xl">.</span>
     </Link>
   );
 };
