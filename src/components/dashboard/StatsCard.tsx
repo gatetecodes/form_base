@@ -6,6 +6,7 @@ export const StatsCard = ({
   title,
   value,
   icon,
+  iconBackground,
   helperText,
   loading,
   className,
@@ -13,20 +14,32 @@ export const StatsCard = ({
   title: string;
   value: string;
   icon: React.ReactNode;
+  iconBackground: string;
   helperText: string;
   loading: boolean;
   className: string;
 }) => {
   return (
-    <Card className={cn(className, "relative")}>
-      <CardHeader>
-        <CardTitle className="text-xl  font-medium text-muted-foreground">
+    <Card
+      className={cn(
+        className,
+        "relative p-5 border-none flex items-center gap-5 rounded-none"
+      )}
+    >
+      <div
+        className={cn(
+          "flex items-center justify-center flex-col p-2 rounded-xl",
+          `bg-${iconBackground}`
+        )}
+      >
+        {icon}
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <h2 className="text-lg font-semibold text-mutedText leading-[0.5] mt-3">
           {title}
-        </CardTitle>{" "}
-        <div className="absolute right-2 top-2 opacity-30">{icon}</div>
-      </CardHeader>
-      <CardContent>
-        <div className="text-2xl font-bold">
+        </h2>
+        <div className="text-4xl text-white font-medium">
           {loading && (
             <Skeleton>
               <span className="opacity-0">0</span>
@@ -34,8 +47,7 @@ export const StatsCard = ({
           )}
           {!loading && value}
         </div>
-        <p className="text-xs text-muted-foreground pt-1">{helperText}</p>
-      </CardContent>
+      </div>
     </Card>
   );
 };

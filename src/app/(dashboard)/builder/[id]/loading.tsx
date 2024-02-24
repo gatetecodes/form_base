@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
-import { ImSpinner2 } from "react-icons/im";
+import { Icon } from "@iconify/react";
 
 const Loading = () => {
   return (
     <div className="flex items-center justify-center w-full h-full">
-      <ImSpinner2 className="animate-spin h-20 w-20" />
+      <Icon icon="quill:loading-spin" className="animate-spin h-20 w-20" />
     </div>
   );
 };
