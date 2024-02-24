@@ -1,3 +1,4 @@
+"use client";
 import { Form } from "@prisma/client";
 import {
   Card,
@@ -9,15 +10,13 @@ import {
 } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { formatDistance } from "date-fns";
-import { LuView } from "react-icons/lu";
-import { FaWpforms, FaEdit } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { BiRightArrowAlt } from "react-icons/bi";
 
 const FormCard = ({ form }: { form: Form }) => {
   return (
-    <Card>
+    <Card className="rounded-3xl">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 justify-between">
           <span className="truncate font-bold">{form.name}</span>
@@ -30,9 +29,12 @@ const FormCard = ({ form }: { form: Form }) => {
           })}
           {form.published && (
             <span className="flex items-center gap-2">
-              <LuView className="text-muted-foreground" />
+              <Icon icon="fluent-mdl2:view" className="text-muted-foreground" />
               <span>{form.visits.toLocaleString()}</span>
-              <FaWpforms className="text-muted-foreground" />
+              <Icon
+                icon="fluent-mdl2:forms"
+                className="text-muted-foreground"
+              />
               <span>{form.submissions.toLocaleString()}</span>
             </span>
           )}
@@ -45,7 +47,7 @@ const FormCard = ({ form }: { form: Form }) => {
         {form.published && (
           <Button asChild className="w-full mt-2 text-md gap-4">
             <Link href={`/form/${form.id}`}>
-              View submissions <BiRightArrowAlt />{" "}
+              View submissions <Icon icon="fluent-mdl2:arrow-right" />{" "}
             </Link>
           </Button>
         )}
@@ -56,7 +58,7 @@ const FormCard = ({ form }: { form: Form }) => {
             className="w-full mt-2 text-md gap-4"
           >
             <Link href={`/builder/${form.id}`}>
-              Edit Form <FaEdit />{" "}
+              Edit Form <Icon icon="fluent-mdl2:edit" />{" "}
             </Link>
           </Button>
         )}

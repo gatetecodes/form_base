@@ -10,8 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { BsFileEarmarkPlus } from "react-icons/bs";
-import { ImSpinner2 } from "react-icons/im";
+import { Icon } from "@iconify/react";
 import { Button } from "./ui/button";
 import {
   Form,
@@ -19,12 +18,10 @@ import {
   FormLabel,
   FormItem,
   FormField,
-  FormDescription,
   FormMessage,
 } from "./ui/form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -62,10 +59,10 @@ const CreateFormBtn = () => {
       <DialogTrigger asChild>
         <Button
           variant={"outline"}
-          className="group border border-primary/20 h-[190px] items-center justify-center flex flex-col hover:border-primary hover:cursor-pointer border-dashed gap-4"
+          className="group border-2 border-spacing-5  border-border h-[190px] rounded-3xl items-center justify-center flex flex-col hover:bg-white/15 hover:border-white/50 hover:cursor-pointer border-dashed gap-4"
         >
-          <BsFileEarmarkPlus className="h-8 w-8 text-muted-foreground group-hover:text-primary" />
-          <p className="font-bold text-xl text-muted-foreground group-hover:text-primary">
+          <Icon icon="iconamoon:file-add-light" className="w-10 h-10" />
+          <p className="font-semibold text-xl text-muted-foreground group-hover:text-primary">
             Create new form
           </p>
         </Button>
@@ -114,7 +111,7 @@ const CreateFormBtn = () => {
             className="w-full mt-4"
           >
             {form.formState.isSubmitting ? (
-              <ImSpinner2 className="animate-spin" />
+              <Icon icon="quill:loading-spin" className="animate-spin" />
             ) : (
               <span>Save</span>
             )}
