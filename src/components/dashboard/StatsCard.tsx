@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+import { Card } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 
 export const StatsCard = ({
@@ -29,7 +29,7 @@ export const StatsCard = ({
       <div
         className={cn(
           "flex items-center justify-center flex-col p-2 rounded-xl",
-          `bg-${iconBackground}`
+          iconBackground
         )}
       >
         {icon}

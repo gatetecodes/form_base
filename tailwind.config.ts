@@ -48,10 +48,7 @@ const config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
+        accent: "#44474d",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -82,6 +79,9 @@ const config = {
       },
     },
   },
+  safelist: [
+    "bg-lightOrange, bg-lightGreen, bg-cardSand, bg-lightPurple, bg-lightTeal, bg-lightSand ",
+  ],
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 

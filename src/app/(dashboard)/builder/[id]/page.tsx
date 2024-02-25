@@ -7,7 +7,11 @@ const BuilderPage = async ({ params }: { params: { id: string } }) => {
   if (!form) {
     throw new Error("Form not found");
   }
-  return <FormBuilder form={form} />;
+  return (
+    <div className="container">
+      <FormBuilder form={form} />
+    </div>
+  );
 };
 
 export default BuilderPage;
