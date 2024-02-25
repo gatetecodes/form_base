@@ -17,32 +17,32 @@ export const StatsCards = ({ loading, stats }: StatsCardProps) => {
         value={stats?.visits.toLocaleString() ?? ""}
         loading={loading}
         className="bg-tranparent"
-        iconBackground="lightestGreen"
+        iconBackground="bg-lightestGreen"
       />
       <StatsCard
         title="Total submissions"
         icon={
           <Icon
             icon="material-symbols:upload"
-            className="text-gray-700 h-8 w-8"
+            className="text-gray-900 h-8 w-8"
           />
         }
         helperText="All time form submissions"
         value={stats?.submissions.toLocaleString() ?? ""}
         loading={loading}
         className="bg-transparent"
-        iconBackground="lightGreen"
+        iconBackground="bg-lightGreen"
       />
       <StatsCard
         title="Submission rate"
         icon={
-          <Icon icon="iconamoon:trend-up" className="text-gray-700 h-8 w-8" />
+          <Icon icon="iconamoon:trend-up" className="text-gray-800 h-8 w-8" />
         }
         helperText="Visists that result in form submission"
         value={stats?.submissionRate.toLocaleString() + "%"}
         loading={loading}
         className="bg-transparent"
-        iconBackground="lightPurple"
+        iconBackground="bg-lightPurple"
       />
       <StatsCard
         title="Bounce rate"
@@ -56,7 +56,7 @@ export const StatsCards = ({ loading, stats }: StatsCardProps) => {
         value={stats?.visits.toLocaleString() + "%"}
         loading={loading}
         className="bg-transparent"
-        iconBackground="cardSand"
+        iconBackground="bg-cardSand"
       />
     </div>
   );

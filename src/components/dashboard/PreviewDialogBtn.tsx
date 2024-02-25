@@ -4,7 +4,10 @@ import { Icon } from "@iconify/react";
 
 const PreviewDialogBtn = () => {
   return (
-    <Button variant={"outline"} className="gap-2">
+    <Button
+      variant={"outline"}
+      className="gap-2 border border-border rounded-full"
+    >
       <Icon icon="icon-park-outline:preview-open" className="w-6 h-6" />
       Preview
     </Button>
