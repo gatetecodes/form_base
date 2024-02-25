@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
+import FormDesignerContextProvider from "@/context/FormDesignerContext";
 
 const cyne = Syne({ subsets: ["latin"] });
 
@@ -22,8 +23,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={cn(cyne.className, "bg-background")}>
-          {children}
-          <Toaster />
+          <FormDesignerContextProvider>
+            {children}
+            <Toaster />
+          </FormDesignerContextProvider>
         </body>
       </html>
     </ClerkProvider>
